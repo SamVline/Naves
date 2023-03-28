@@ -42,7 +42,7 @@ class Navesteroides:
             # if estado_teclado[pygame.K_z]:
                # self.jugador1.muevete(Jugador.ABAJO)
 
-            self.pantalla.fill(255, 250, 0)
+            self.pantalla.fill((0, 0, 0))
 
             pygame.display.flip()
             self.reloj.tick(FPS)
