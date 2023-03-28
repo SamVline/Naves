@@ -24,3 +24,30 @@ class Navesteroides:
         pos_x = (MARGEN)
 
         pygame.font.init()
+
+    def bucle_principal(self):
+        salir = False
+        while not salir:
+            for evento in pygame.event.get():
+                if evento.type == pygame.QUIT:
+                    salir = True
+                if evento.type == pygame.KEYDOWN:
+                    if evento.key == pygame.K_ESCAPE:
+                        salir = True
+
+            # estado_teclado = pygame.key.get_pressed()
+            # if estado_teclado[pygame.K_a]:
+               # self.Nave.muevete(Nave.ARRIBA)
+
+            # if estado_teclado[pygame.K_z]:
+               # self.jugador1.muevete(Jugador.ABAJO)
+
+            self.pantalla.fill(255, 250, 0)
+
+            pygame.display.flip()
+            self.reloj.tick(FPS)
+
+
+if __name__ == "__main__":
+    juego = Navesteroides()
+    juego.bucle_principal()
