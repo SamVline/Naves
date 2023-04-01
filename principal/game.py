@@ -2,6 +2,9 @@ import pygame
 
 ### Variables ###
 
+pygame.display.set_caption("Navesteroides")
+
+
 ALTO = 800
 ANCHO = 1000
 ALTO_NAVE = ALTO/25
@@ -9,8 +12,32 @@ ANCHO_NAVE = ANCHO/25
 MARGEN = ANCHO_NAVE/2
 FPS = 30
 VEL_NAVE = 10
+CBLANCO = (255, 255, 180)
 VEL_ROCA = 10
 TAM_ROCA = 20
+
+
+class Nave(pygame.Rect):
+    ARRIBA = True
+    ABAJO = False
+    VELOCIDAD = VEL_NAVE
+
+    def __init__(self, pos_x, pos_y):
+        super(Nave, self).__init__(pos_x, pos_y, ANCHO_NAVE, ALTO_NAVE)
+
+    def pintame(self, pantalla):
+        pygame.draw.rect(pantalla, CBLANCO, self)
+
+    def muevete(self, direccion):
+        if direccion == self.ARRIBA:
+            self.y = self.y - self.VELOCIDAD
+            if self.y < 0:
+                self.y = 0
+
+        else:
+            self.y = self.y + self.VELOCIDAD
+            if self.y > ALTO-ALTO_NAVE:
+                self.y = ALTO-ALTO_NAVE
 
 
 class Navesteroides:
