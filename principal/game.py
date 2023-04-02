@@ -1,3 +1,4 @@
+import os
 import pygame
 from pygame.sprite import Sprite
 
@@ -17,6 +18,15 @@ VEL_NAVE = 10
 CBLANCO = (255, 255, 180)
 VEL_ROCA = 10
 TAM_ROCA = 20
+
+
+class Nave2(Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.image.load(
+            os.path.join("resources", "sprites", "navecita.png")
+        )
+        self.rect = self.image.get_rect()
 
 
 class Nave(pygame.Rect):
