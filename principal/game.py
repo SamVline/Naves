@@ -1,14 +1,16 @@
 import pygame
+from pygame.sprite import Sprite
 
-### Variables ###
+# miniatura y nombre de la ventana #
 
 pygame.display.set_caption("Navesteroides")
 
+### Variables ###
 
 ALTO = 800
 ANCHO = 1000
-ALTO_NAVE = ALTO/25
-ANCHO_NAVE = ANCHO/25
+ALTO_NAVE = ALTO/20
+ANCHO_NAVE = 50
 MARGEN = ANCHO_NAVE/2
 FPS = 30
 VEL_NAVE = 10
@@ -48,7 +50,8 @@ class Navesteroides:
         self.reloj = pygame.time.Clock()
 
         pos_y = (ALTO-ALTO_NAVE)/2
-        pos_x = (MARGEN)
+        pos_x = (ANCHO_NAVE)
+        self.Nave = Nave(pos_x, pos_y)
 
         pygame.font.init()
 
@@ -62,14 +65,20 @@ class Navesteroides:
                     if evento.key == pygame.K_ESCAPE:
                         salir = True
 
-            # estado_teclado = pygame.key.get_pressed()
-            # if estado_teclado[pygame.K_a]:
-               # self.Nave.muevete(Nave.ARRIBA)
+            estado_teclado = pygame.key.get_pressed()
+            if estado_teclado[pygame.K_a]:
+                self.Nave.muevete(Nave.ARRIBA)
 
-            # if estado_teclado[pygame.K_z]:
-               # self.jugador1.muevete(Jugador.ABAJO)
+            if estado_teclado[pygame.K_z]:
+                self.Nave.muevete(Nave.ABAJO)
 
-            self.pantalla.fill((0, 0, 0))
+            # AÑADIR AQUI LA IMAGEN DE NAVE
+
+            pygame.draw.rect(self.pantalla, CBLANCO, self.Nave)
+
+            self.pantalla.fill((12, 0, 0))  # AÑADIR AQUI LA IMAGEN DE FONDO
+
+            self.Nave.pintame(self.pantalla)
 
             pygame.display.flip()
             self.reloj.tick(FPS)
