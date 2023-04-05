@@ -59,6 +59,11 @@ class Navesteroides:
         self.pantalla = pygame.display.set_mode((ANCHO, ALTO))
         self.reloj = pygame.time.Clock()
 
+        ruta_icono = os.path.join(
+            "resources", "sprites", "PNG", "Parts", "icono.png")
+
+        icono = pygame.image.load(ruta_icono)
+
         pos_y = (ALTO-ALTO_NAVE)/2
         pos_x = (ANCHO_NAVE)
         self.Nave = Nave(pos_x, pos_y)

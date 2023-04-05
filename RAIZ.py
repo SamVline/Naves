@@ -1,4 +1,4 @@
-import pygame
+from principal.game import Navesteroides
 
 
 # instalamos pygame asi
@@ -17,3 +17,7 @@ FPS = 30
 VEL_NAVE = 10
 VEL_ROCA = 10
 TAM_ROCA = 20
+
+if __name__ == "__main__":
+    juego = Navesteroides()
+    juego.bucle_principal()
