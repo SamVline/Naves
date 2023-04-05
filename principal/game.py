@@ -63,6 +63,7 @@ class Navesteroides:
             "resources", "sprites", "PNG", "Parts", "icono.png")
 
         icono = pygame.image.load(ruta_icono)
+        pygame.display.set_icon(icono)
 
         pos_y = (ALTO-ALTO_NAVE)/2
         pos_x = (ANCHO_NAVE)
