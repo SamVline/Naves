@@ -61,9 +61,13 @@ class Navesteroides:
 
         ruta_icono = os.path.join(
             "resources", "sprites", "PNG", "Parts", "icono.png")
+        ruta_fondo = os.path.join(
+            "resources", "sprites", "Fondos", "Fondo1.jpg")
 
         icono = pygame.image.load(ruta_icono)
         pygame.display.set_icon(icono)
+
+        self.fondo = pygame.image.load(ruta_fondo)
 
         pos_y = (ALTO-ALTO_NAVE)/2
         pos_x = (ANCHO_NAVE)
@@ -93,6 +97,7 @@ class Navesteroides:
             pygame.draw.rect(self.pantalla, CBLANCO, self.Nave)
 
             self.pantalla.fill((12, 0, 0))  # AÑADIR AQUI LA IMAGEN DE FONDO
+            self.pantalla.blit(self.fondo, (0, 0))
 
             self.Nave.pintame(self.pantalla)
 
