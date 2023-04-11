@@ -20,7 +20,7 @@ VEL_ROCA = 10
 TAM_ROCA = 20
 
 
-class Nave2(Sprite):
+class Nave_imagen(Sprite):
     def __init__(self):
         super().__init__()
         self.image = pygame.image.load(
@@ -76,6 +76,8 @@ class Navesteroides:
         pygame.font.init()
 
     def bucle_principal(self):
+        x = 0
+        y = 0
         salir = False
         while not salir:
             for evento in pygame.event.get():
@@ -97,11 +99,19 @@ class Navesteroides:
             pygame.draw.rect(self.pantalla, CBLANCO, self.Nave)
 
             self.pantalla.fill((12, 0, 0))  # AÑADIR AQUI LA IMAGEN DE FONDO
-            self.pantalla.blit(self.fondo, (0, 0))
+
+            x_relativa = x % self.fondo.get_rect().width
+            self.pantalla.blit(
+                self.fondo, (x_relativa - self.fondo.get_rect().width, 0))
+            if x_relativa < ANCHO:
+                self.pantalla.blit(self.fondo, (x_relativa, 0))
+
+            x -= 2
 
             self.Nave.pintame(self.pantalla)
 
             pygame.display.flip()
+
             self.reloj.tick(FPS)
 
 
