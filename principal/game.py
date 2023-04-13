@@ -13,8 +13,8 @@ ANCHO = 1000
 ALTO_NAVE = ALTO/20
 ANCHO_NAVE = 50
 MARGEN = ANCHO_NAVE/2
-FPS = 30
-VEL_NAVE = 10
+FPS = 60
+VEL_NAVE = 12
 CBLANCO = (255, 255, 180)
 VEL_ROCA = 10
 TAM_ROCA = 20
@@ -63,11 +63,14 @@ class Navesteroides:
             "resources", "sprites", "PNG", "Parts", "icono.png")
         ruta_fondo = os.path.join(
             "resources", "sprites", "Fondos", "Fondo1.jpg")
+        ruta_nave = os.path.join(
+            "resources", "sprites", "navecita.png")
 
         icono = pygame.image.load(ruta_icono)
         pygame.display.set_icon(icono)
 
         self.fondo = pygame.image.load(ruta_fondo)
+        self.nave_imagen = pygame.image.load(ruta_nave)
 
         pos_y = (ALTO-ALTO_NAVE)/2
         pos_x = (ANCHO_NAVE)
@@ -96,9 +99,7 @@ class Navesteroides:
 
             # AÑADIR AQUI LA IMAGEN DE NAVE
 
-            pygame.draw.rect(self.pantalla, CBLANCO, self.Nave)
-
-            self.pantalla.fill((12, 0, 0))  # AÑADIR AQUI LA IMAGEN DE FONDO
+            # self.pantalla.fill((12, 0, 0))  # AÑADIR AQUI LA IMAGEN DE FONDO
 
             x_relativa = x % self.fondo.get_rect().width
             self.pantalla.blit(
@@ -108,8 +109,9 @@ class Navesteroides:
 
             x -= 2
 
-            self.Nave.pintame(self.pantalla)
+            self.pantalla.blit(self.nave_imagen, (x, y))
 
+            self.Nave.pintame(self.pantalla)
             pygame.display.flip()
 
             self.reloj.tick(FPS)
